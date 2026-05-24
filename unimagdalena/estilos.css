@@ -118,6 +118,90 @@ body {
   transform: translateY(-2px);
 }
 
+.hero-botones {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.boton-amarillo-borde {
+  background-color: transparent;
+  color: var(--amarillo);
+  border: 2px solid var(--amarillo);
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.boton-amarillo-borde:hover {
+  background-color: var(--amarillo);
+  color: var(--azul);
+  transform: translateY(-2px);
+}
+
+.carrusel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.carrusel-ventana {
+  flex: 1;
+  overflow: hidden;
+}
+
+.carrusel-pista {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s ease;
+}
+
+.carrusel-pista .tarjeta-objeto {
+  flex: 0 0 calc((100% - 40px) / 3);
+}
+
+@media (max-width: 900px) {
+  .carrusel-pista .tarjeta-objeto {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .carrusel-pista .tarjeta-objeto {
+    flex: 0 0 100%;
+  }
+}
+
+.carrusel-flecha {
+  background-color: var(--azul);
+  color: var(--blanco);
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.carrusel-flecha:hover {
+  background-color: var(--amarillo);
+  color: var(--azul);
+}
+
+.modal-nota {
+  background-color: var(--gris-claro);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--texto);
+}
+
 .seccion {
   padding: 60px 0;
 }
