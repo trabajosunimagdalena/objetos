@@ -32,7 +32,10 @@
         Encuentra y reporta objetos perdidos dentro del campus de la Universidad del Magdalena
         de forma rápida y sencilla.
       </p>
-      <button class="boton-principal" id="botonReportar">Reportar Objeto</button>
+      <div class="hero-botones">
+        <button class="boton-principal" id="botonReportar">Reportar Objeto Perdido</button>
+        <button class="boton-amarillo-borde" id="botonEncontre">Encontré un Objeto</button>
+      </div>
     </div>
   </section>
 
@@ -41,52 +44,12 @@
       <h3 class="seccion-titulo">Muro de Objetos Encontrados</h3>
       <p class="seccion-subtitulo">Revisa si alguno de estos objetos es tuyo</p>
 
-      <div class="cuadricula-objetos">
-
-        <article class="tarjeta-objeto">
-          <div class="tarjeta-imagen" style="background-color: #cce0ff;">Termo</div>
-          <div class="tarjeta-contenido">
-            <span class="etiqueta">Encontrado</span>
-            <h4>Termo azul</h4>
-            <p><strong>Lugar:</strong> Biblioteca Germán Bula</p>
-            <p><strong>Fecha:</strong> 20 de mayo</p>
-            <button class="boton-secundario">Reclamar</button>
-          </div>
-        </article>
-
-        <article class="tarjeta-objeto">
-          <div class="tarjeta-imagen" style="background-color: #fff0b3;">Cuaderno</div>
-          <div class="tarjeta-contenido">
-            <span class="etiqueta">Encontrado</span>
-            <h4>Cuaderno argollado</h4>
-            <p><strong>Lugar:</strong> Bloque 8, salón 203</p>
-            <p><strong>Fecha:</strong> 19 de mayo</p>
-            <button class="boton-secundario">Reclamar</button>
-          </div>
-        </article>
-
-        <article class="tarjeta-objeto">
-          <div class="tarjeta-imagen" style="background-color: #d9f2d9;">Carnet</div>
-          <div class="tarjeta-contenido">
-            <span class="etiqueta">Encontrado</span>
-            <h4>Carnet estudiantil</h4>
-            <p><strong>Lugar:</strong> Cafetería central</p>
-            <p><strong>Fecha:</strong> 21 de mayo</p>
-            <button class="boton-secundario">Reclamar</button>
-          </div>
-        </article>
-
-        <article class="tarjeta-objeto">
-          <div class="tarjeta-imagen" style="background-color: #f5d6d6;">Audífonos</div>
-          <div class="tarjeta-contenido">
-            <span class="etiqueta">Encontrado</span>
-            <h4>Audífonos negros</h4>
-            <p><strong>Lugar:</strong> Polideportivo</p>
-            <p><strong>Fecha:</strong> 22 de mayo</p>
-            <button class="boton-secundario">Reclamar</button>
-          </div>
-        </article>
-
+      <div class="carrusel">
+        <button class="carrusel-flecha" id="carruselAnterior" aria-label="Anterior">&#10094;</button>
+        <div class="carrusel-ventana">
+          <div class="carrusel-pista" id="carruselPista"></div>
+        </div>
+        <button class="carrusel-flecha" id="carruselSiguiente" aria-label="Siguiente">&#10095;</button>
       </div>
     </div>
   </section>
@@ -121,13 +84,13 @@
     </div>
   </footer>
 
-  <div class="modal-fondo" id="modalFondo">
+  <div class="modal-fondo" id="modalReportar">
     <div class="modal">
       <div class="modal-cabecera">
-        <h3>Reportar Objeto</h3>
-        <button class="modal-cerrar" id="modalCerrar">&times;</button>
+        <h3>Reportar Objeto Perdido</h3>
+        <button class="modal-cerrar" data-cerrar="modalReportar">&times;</button>
       </div>
-      <form id="formularioReporte" class="modal-formulario">
+      <form class="modal-formulario" data-tipo="perdido">
         <label>
           Categoría
           <select name="categoria" required>
@@ -140,7 +103,7 @@
           </select>
         </label>
         <label>
-          Lugar
+          Lugar donde lo perdiste
           <input type="text" name="lugar" placeholder="Ej: Biblioteca, Bloque 5" required />
         </label>
         <label>
@@ -151,7 +114,76 @@
           Tu contacto
           <input type="text" name="contacto" placeholder="Correo o celular" required />
         </label>
-        <button type="submit" class="boton-principal">Enviar</button>
+        <button type="submit" class="boton-principal">Enviar Reporte</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-fondo" id="modalEncontre">
+    <div class="modal">
+      <div class="modal-cabecera">
+        <h3>Encontré un Objeto</h3>
+        <button class="modal-cerrar" data-cerrar="modalEncontre">&times;</button>
+      </div>
+      <form class="modal-formulario" data-tipo="encontrado">
+        <label>
+          Categoría
+          <select name="categoria" required>
+            <option value="">Selecciona una categoría</option>
+            <option>Documentos</option>
+            <option>Electrónicos</option>
+            <option>Ropa y accesorios</option>
+            <option>Útiles escolares</option>
+            <option>Otro</option>
+          </select>
+        </label>
+        <label>
+          Nombre corto del objeto
+          <input type="text" name="nombre" placeholder="Ej: Termo azul" required />
+        </label>
+        <label>
+          Lugar donde lo encontraste
+          <input type="text" name="lugar" placeholder="Ej: Cafetería central" required />
+        </label>
+        <label>
+          Descripción
+          <textarea name="descripcion" rows="3" placeholder="Describe el objeto" required></textarea>
+        </label>
+        <label>
+          Tu contacto
+          <input type="text" name="contacto" placeholder="Correo o celular" required />
+        </label>
+        <button type="submit" class="boton-principal">Publicar en el Muro</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-fondo" id="modalReclamar">
+    <div class="modal">
+      <div class="modal-cabecera">
+        <h3>Reclamar Objeto</h3>
+        <button class="modal-cerrar" data-cerrar="modalReclamar">&times;</button>
+      </div>
+      <form class="modal-formulario" data-tipo="reclamo">
+        <p class="modal-nota">Reclamando: <strong id="reclamarObjetoNombre"></strong></p>
+        <input type="hidden" name="objeto" />
+        <label>
+          Tu nombre completo
+          <input type="text" name="nombre" placeholder="Ej: Juan Pérez" required />
+        </label>
+        <label>
+          Tu código estudiantil
+          <input type="text" name="codigo" placeholder="Ej: 2021123456" required />
+        </label>
+        <label>
+          Tu contacto
+          <input type="text" name="contacto" placeholder="Correo o celular" required />
+        </label>
+        <label>
+          ¿Por qué es tuyo?
+          <textarea name="prueba" rows="3" placeholder="Describe detalles que prueben que es tuyo" required></textarea>
+        </label>
+        <button type="submit" class="boton-principal">Enviar Reclamo</button>
       </form>
     </div>
   </div>
