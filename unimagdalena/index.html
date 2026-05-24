@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Objetos Perdidos y Encontrados - Universidad del Magdalena</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera-contenido">
+      <div class="logo">
+        <span class="logo-icono">U</span>
+        <div>
+          <h1 class="logo-titulo">Unimagdalena</h1>
+          <p class="logo-subtitulo">Objetos Perdidos y Encontrados</p>
+        </div>
+      </div>
+      <nav class="navegacion">
+        <a href="#inicio">Inicio</a>
+        <a href="#muro">Muro</a>
+        <a href="#ayuda">Ayuda</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="contenedor">
+      <h2 class="hero-titulo">¿Perdiste algo en la Universidad?</h2>
+      <p class="hero-descripcion">
+        Encuentra y reporta objetos perdidos dentro del campus de la Universidad del Magdalena
+        de forma rápida y sencilla.
+      </p>
+      <button class="boton-principal" id="botonReportar">Reportar Objeto</button>
+    </div>
+  </section>
+
+  <section id="muro" class="seccion">
+    <div class="contenedor">
+      <h3 class="seccion-titulo">Muro de Objetos Encontrados</h3>
+      <p class="seccion-subtitulo">Revisa si alguno de estos objetos es tuyo</p>
+
+      <div class="cuadricula-objetos">
+
+        <article class="tarjeta-objeto">
+          <div class="tarjeta-imagen" style="background-color: #cce0ff;">Termo</div>
+          <div class="tarjeta-contenido">
+            <span class="etiqueta">Encontrado</span>
+            <h4>Termo azul</h4>
+            <p><strong>Lugar:</strong> Biblioteca Germán Bula</p>
+            <p><strong>Fecha:</strong> 20 de mayo</p>
+            <button class="boton-secundario">Reclamar</button>
+          </div>
+        </article>
+
+        <article class="tarjeta-objeto">
+          <div class="tarjeta-imagen" style="background-color: #fff0b3;">Cuaderno</div>
+          <div class="tarjeta-contenido">
+            <span class="etiqueta">Encontrado</span>
+            <h4>Cuaderno argollado</h4>
+            <p><strong>Lugar:</strong> Bloque 8, salón 203</p>
+            <p><strong>Fecha:</strong> 19 de mayo</p>
+            <button class="boton-secundario">Reclamar</button>
+          </div>
+        </article>
+
+        <article class="tarjeta-objeto">
+          <div class="tarjeta-imagen" style="background-color: #d9f2d9;">Carnet</div>
+          <div class="tarjeta-contenido">
+            <span class="etiqueta">Encontrado</span>
+            <h4>Carnet estudiantil</h4>
+            <p><strong>Lugar:</strong> Cafetería central</p>
+            <p><strong>Fecha:</strong> 21 de mayo</p>
+            <button class="boton-secundario">Reclamar</button>
+          </div>
+        </article>
+
+        <article class="tarjeta-objeto">
+          <div class="tarjeta-imagen" style="background-color: #f5d6d6;">Audífonos</div>
+          <div class="tarjeta-contenido">
+            <span class="etiqueta">Encontrado</span>
+            <h4>Audífonos negros</h4>
+            <p><strong>Lugar:</strong> Polideportivo</p>
+            <p><strong>Fecha:</strong> 22 de mayo</p>
+            <button class="boton-secundario">Reclamar</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="ayuda" class="seccion seccion-clara">
+    <div class="contenedor">
+      <h3 class="seccion-titulo">¿Cómo funciona?</h3>
+      <div class="pasos">
+        <div class="paso">
+          <div class="paso-numero">1</div>
+          <h4>Reporta</h4>
+          <p>Llena el formulario con la información del objeto perdido o encontrado.</p>
+        </div>
+        <div class="paso">
+          <div class="paso-numero">2</div>
+          <h4>Publicamos</h4>
+          <p>Tu reporte aparecerá en el muro para que toda la comunidad lo vea.</p>
+        </div>
+        <div class="paso">
+          <div class="paso-numero">3</div>
+          <h4>Recupera</h4>
+          <p>Te contactamos cuando alguien identifique tu objeto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p>Universidad del Magdalena - Proyecto UX</p>
+      <p>Contacto: jrcervantesp@unimagdalena.edu.co</p>
+    </div>
+  </footer>
+
+  <div class="modal-fondo" id="modalFondo">
+    <div class="modal">
+      <div class="modal-cabecera">
+        <h3>Reportar Objeto</h3>
+        <button class="modal-cerrar" id="modalCerrar">&times;</button>
+      </div>
+      <form id="formularioReporte" class="modal-formulario">
+        <label>
+          Categoría
+          <select name="categoria" required>
+            <option value="">Selecciona una categoría</option>
+            <option>Documentos</option>
+            <option>Electrónicos</option>
+            <option>Ropa y accesorios</option>
+            <option>Útiles escolares</option>
+            <option>Otro</option>
+          </select>
+        </label>
+        <label>
+          Lugar
+          <input type="text" name="lugar" placeholder="Ej: Biblioteca, Bloque 5" required />
+        </label>
+        <label>
+          Descripción
+          <textarea name="descripcion" rows="3" placeholder="Describe el objeto" required></textarea>
+        </label>
+        <label>
+          Tu contacto
+          <input type="text" name="contacto" placeholder="Correo o celular" required />
+        </label>
+        <button type="submit" class="boton-principal">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
